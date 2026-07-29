@@ -613,3 +613,130 @@ header{
 }
 
 }
+
+/* Ripple Effect */
+
+.primary,
+.join{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.ripple{
+
+position:absolute;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.5);
+
+transform:scale(0);
+
+animation:ripple .6s linear;
+
+pointer-events:none;
+
+}
+
+@keyframes ripple{
+
+to{
+
+transform:scale(4);
+
+opacity:0;
+
+}
+
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo-img{
+    height: 60px;      /* Adjust as needed */
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ==========================
+   PARTNERS
+========================== */
+
+.partners{
+
+    width:100%;
+
+    background:#ffffff;
+
+    padding:30px 0;
+
+}
+
+.partner-container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:90px;
+
+    flex-wrap:wrap;
+
+}
+
+.partner{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.35s;
+
+}
+
+.partner img{
+
+    height:70px;
+
+    width:auto;
+
+    object-fit:contain;
+
+    filter:grayscale(100%);
+
+    opacity:.75;
+
+    transition:.35s;
+
+}
+
+.partner:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.partner:hover img{
+
+    filter:none;
+
+    opacity:1;
+
+}
