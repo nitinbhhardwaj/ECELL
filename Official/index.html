@@ -1,247 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Founders' Cell — Build. Break. Ship.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Cell | Ideate. Innovate. Incubate.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://www.abes.ac.in/ecell/static/media/ecell_abes.d6428caca61583a3ea25.png" type="img/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-  <div class="nav-wrap">
-    <a href="#top" class="logo">Founders' Cell<span class="dot">.</span></a>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#pipeline">Process</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#recap">Recap</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#team">Team</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">E-CELL<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#initiatives">Initiatives</a></li>
+                <li><a href="#events">Events</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <!-- Institutional Logos as Links -->
+            <div class="header-logos">
+                <!-- Change href below to your college/partner link -->
+                <a href="https://www.abes.ac.in" target="_blank" class="partner-link">
+                    <img src="images.png" alt="College Logo 1">
+                </a>
+                <!-- Change href below to your college/partner link -->
+                <a href="https://inurture.net" target="_blank" class="partner-link">
+                    <img src="inic.jpeg" alt="Partner Logo 2">
+                </a>
+            </div>
+            <a href="#contact" class="btn-primary">Get Involved</a>
+        </div>
     </nav>
-    <a href="#join" class="nav-cta">Get Involved →</a>
-    <button class="menu-btn" aria-label="menu">☰</button>
-  </div>
-</header>
 
-<section class="hero blueprint" id="top">
-  <span class="corner-mark cm-tl">FIG. 01 — CAMPUS / STARTUP PIPELINE</span>
-  <span class="corner-mark cm-tr">EST. 2010 · REV 25</span>
-  <div class="hero-inner">
-    <div class="eyebrow"><span>Entrepreneurship Cell</span><span class="eyebrow-rule"></span><span>Campus Chapter</span></div>
-    <h1 class="reveal in">We build the room <em>before</em> the idea walks in.</h1>
-    <p class="hero-sub">A student-run cell turning half-formed ideas into funded companies — through mentorship, seed capital, and a campus full of people who'd rather ship than wait.</p>
-    <div class="hero-actions">
-      <a href="#events" class="btn-primary">See this year's events →</a>
-      <a href="#about" class="btn-ghost">What we do</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="num">120+</div><div class="lbl">Startups incubated</div></div>
-      <div class="stat"><div class="num">₹4.2Cr</div><div class="lbl">Seed capital enabled</div></div>
-      <div class="stat"><div class="num">15k+</div><div class="lbl">Summit footfall</div></div>
-      <div class="stat"><div class="num">300+</div><div class="lbl">Active members</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="section-inner about-grid">
-    <div class="reveal">
-      <div class="section-eyebrow">§ 02 — About</div>
-      <h2 style="margin-bottom:26px;">Not a club. A pipeline.</h2>
-      <p>Most people meet us at an event. What they don't see is the year-round work — <strong>the mentor calls, the pitch reviews, the 1am "can you look at this deck" messages</strong> — that turns a hallway conversation into a company.</p>
-      <p>We exist to shorten the distance between <strong>having an idea</strong> and <strong>knowing if it works</strong>. Everything we run, from workshops to our flagship summit, is built around that one job.</p>
-    </div>
-    <div class="reveal" id="pipeline">
-      <div class="pipeline">
-        <div class="pipe-step" data-n="01">
-          <h4>Ideate</h4>
-          <p>Open sessions, hangouts, and campus talks that turn "what if" into a written-down thesis.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="fade-in">Empowering the <span>Next Gen</span> of Founders</h1>
+                <p class="fade-in delay-1">The Entrepreneurship Cell is a student-run body committed to fostering an entrepreneurial spirit among the student community.</p>
+                <div class="hero-btns fade-in delay-2">
+                    <a href="#events" class="btn-main">Explore Events</a>
+                    <a href="#initiatives" class="btn-outline">Our Initiatives</a>
+                </div>
+            </div>
+            
+            <!-- New Hero Image on the Right -->
+            <div class="hero-image fade-in delay-1">
+                <!-- Replace 'src' with your entrepreneurship-themed image -->
+                <img src="build.png" alt="Entrepreneurship Illustration">
+                <div class="image-glow"></div>
+            </div>
         </div>
-        <div class="pipe-step" data-n="02">
-          <h4>Innovate</h4>
-          <p>Bootcamps and mentor sprints where the thesis gets pressure-tested against real users.</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-card">
+            <h3 class="counter" data-target="50">0</h3>
+            <p>Startups Incubated</p>
         </div>
-        <div class="pipe-step" data-n="03">
-          <h4>Incubate</h4>
-          <p>Seed connects, internship pipelines, and investor rooms for the ideas that hold up.</p>
+        <div class="stat-card">
+            <h3 class="counter" data-target="1500">0</h3>
+            <p>Students Impacted</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="stat-card">
+            <h3 class="counter" data-target="25">0</h3>
+            <p>Annual Events</p>
+        </div>
+    </section>
 
-<!-- ===== Mentor quote section (new) ===== -->
-<section class="mentor" id="mentor">
-  <div class="section-inner mentor-grid">
-    <div class="reveal mentor-photo-wrap">
-      <!-- REPLACE SRC: photo of your faculty/mentor, portrait orientation works best (4:5) -->
-      <img class="mentor-photo" src="https://via.placeholder.com/640x800/111C33/F6F3EC?text=Mentor+Photo" alt="Faculty mentor portrait">
-      <div class="mentor-tag">Mentor <span>·</span> E-Cell</div>
-    </div>
-    <div class="reveal">
-      <div class="section-eyebrow">§ 03 — A word from our mentor</div>
-      <p class="mentor-quote">"The need to act is clear. Entrepreneurs have the power to create jobs and drive growth — but first we need to give them the tools and the room to try, fail, and try again."</p>
-      <div class="mentor-name">
-        <strong>Dr. [Mentor Name]</strong>
-        Faculty Mentor, Founders' Cell
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="events blueprint" id="events">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="reveal">
-        <div class="section-eyebrow">§ 04 — On the calendar</div>
-        <h2>Where the work happens.</h2>
-      </div>
-      <p class="reveal">Four formats, one purpose each — from first idea to first term sheet.</p>
-    </div>
-    <div class="event-grid">
-      <a href="#" class="event-card reveal">
-        <div><span class="event-tag">Flagship · March</span><h3>The Summit</h3><p>Two days, 15,000 attendees, and the investors who actually write checks.</p></div>
-        <div class="event-arrow">Explore →</div>
-      </a>
-      <a href="#" class="event-card reveal">
-        <div><span class="event-tag">Cohort · Rolling</span><h3>Bootcamp</h3><p>A six-week sprint from idea to a pitch you'd actually send an investor.</p></div>
-        <div class="event-arrow">Explore →</div>
-      </a>
-      <a href="#" class="event-card reveal">
-        <div><span class="event-tag">Talks · Quarterly</span><h3>Speaker Series</h3><p>Founders and operators on the record about what almost broke them.</p></div>
-        <div class="event-arrow">Explore →</div>
-      </a>
-      <a href="#" class="event-card reveal">
-        <div><span class="event-tag">Placement · Summer</span><h3>Startup Internships</h3><p>Real roles inside early-stage startups — not coffee-fetching, actual scope.</p></div>
-        <div class="event-arrow">Explore →</div>
-      </a>
-      <a href="#" class="event-card reveal">
-        <div><span class="event-tag">Competition · Nov</span><h3>Pitch Night</h3><p>Ten teams, one room, mentors who push back on stage — not just applaud.</p></div>
-        <div class="event-arrow">Explore →</div>
-      </a>
-      <a href="#" class="event-card reveal">
-        <div><span class="event-tag">Informal · Monthly</span><h3>Campus Hangouts</h3><p>No stage, no slides — just founders and students talking straight.</p></div>
-        <div class="event-arrow">Explore →</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Event recap section (new) — real photo + writeup, styled to match ABES's TES recap ===== -->
-<section class="recap" id="recap">
-  <div class="section-inner recap-grid">
-    <div class="reveal recap-photo-wrap">
-      <!-- REPLACE SRC: wide event photo, landscape works best (16:10) -->
-      <img class="recap-photo" src="https://via.placeholder.com/960x600/182746/F6F3EC?text=Event+Photo" alt="Photo from the Speaker Series event">
-      <div class="recap-frame"></div>
-    </div>
-    <div class="reveal recap-copy">
-      <div class="section-eyebrow">§ 05 — Last month, on stage</div>
-      <h2>Speaker Series: [Speaker Name]</h2>
-      <p>On [Date], Founders' Cell hosted [Speaker Name], founder and CEO of [Company], as the guest speaker for our latest Speaker Series session. [He/She/They] walked the room through the journey of building [Company] from a dorm-room idea into [a one-line description of the company's scale/impact].</p>
-      <p>The session covered what actually breaks early-stage startups, how to read a room of investors, and the case for shipping before you feel ready. Open to students and faculty from across campus.</p>
-      <div class="recap-meta">
-        <span><strong>180+</strong>Attendees</span>
-        <span><strong>90 min</strong>Fireside chat</span>
-        <span><strong>Q&A</strong>Open floor</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="gallery">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="reveal">
-        <div class="section-eyebrow">§ 06 — Field notes</div>
-        <h2>Last year, in frames.</h2>
-      </div>
-      <p class="reveal">A running record of the rooms this community has filled.</p>
-    </div>
-    <div class="gallery-strip">
-      <!-- REPLACE SRC on each image below with real event photos, square-ish crop (4:5) -->
-      <div class="gshot reveal">
-        <img src="https://via.placeholder.com/480x600/111C33/C9D2E3?text=Summit" alt="Summit main stage">
-        <div class="gcap"><span>Summit / Main Stage</span></div>
-      </div>
-      <div class="gshot reveal">
-        <img src="https://via.placeholder.com/480x600/182746/C9D2E3?text=Bootcamp" alt="Bootcamp cohort session">
-        <div class="gcap"><span>Bootcamp / Cohort 6</span></div>
-      </div>
-      <div class="gshot reveal">
-        <img src="https://via.placeholder.com/480x600/111C33/C9D2E3?text=Pitch+Night" alt="Pitch night finals">
-        <div class="gcap"><span>Pitch Night / Finals</span></div>
-      </div>
-      <div class="gshot reveal">
-        <img src="https://via.placeholder.com/480x600/182746/C9D2E3?text=Hangouts" alt="Campus hangouts session">
-        <div class="gcap"><span>Hangouts / Session 12</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="team" style="background:var(--paper-dim);">
-  <div class="section-inner">
-    <div class="section-head">
-      <div class="reveal">
-        <div class="section-eyebrow">§ 07 — The team</div>
-        <h2>Run by students, on the side of a full course load.</h2>
-      </div>
-      <p class="reveal">Reach out — we answer our own email.</p>
-    </div>
-    <div class="team-grid">
-      <!-- REPLACE SRC on each photo below with real team headshots, square crop (1:1) -->
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://via.placeholder.com/400x400/111C33/C9D2E3?text=Photo" alt="Anaya Rao"></div>
-        <h4>Anaya Rao</h4><div class="role">Overall Coordinator</div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://via.placeholder.com/400x400/182746/C9D2E3?text=Photo" alt="Devraj Singh"></div>
-        <h4>Devraj Singh</h4><div class="role">Overall Coordinator</div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://via.placeholder.com/400x400/111C33/C9D2E3?text=Photo" alt="Meher Kapoor"></div>
-        <h4>Meher Kapoor</h4><div class="role">Head, Events</div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-photo"><img src="https://via.placeholder.com/400x400/182746/C9D2E3?text=Photo" alt="Arjun Nair"></div>
-        <h4>Arjun Nair</h4><div class="role">Head, Startup Dev</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta" id="join">
-  <div class="reveal">
-    <div class="section-eyebrow" style="justify-content:center; display:flex;">§ 08 — Stay in the loop</div>
-    <h2>Get notified before the room fills up.</h2>
-    <form class="cta-form">
-      <input type="email" placeholder="you@college.edu" required aria-label="Email address">
-      <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">Notify me</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <a href="#top" class="logo">Founders' Cell<span class="dot">.</span></a>
-      <div class="foot-links" style="margin-top:16px;">
-        <a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X</a><a href="#">YouTube</a>
-      </div>
-    </div>
-    <div class="foot-links">
-      <a href="#about">About</a><a href="#events">Events</a><a href="#team">Team</a><a href="#join">Contact</a>
-    </div>
-  </div>
-  <div class="footer-inner"><div class="foot-copy">Design study inspired by ecelliitk.org and abes.ac.in/ecell — fictional content, built as a UI reference.</div></div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
