@@ -98,3 +98,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+    // ===== Smooth Scrolling =====
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            const targetId = link.getAttribute("href");
+
+            // Ignore empty anchors
+            if (targetId === "#") return;
+
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                e.preventDefault();
+
+                targetSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
+    });

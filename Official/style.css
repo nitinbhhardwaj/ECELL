@@ -417,3 +417,27 @@ section { padding: 100px 8%; }
         transform: translateY(0);
     }
 }
+/* ===== Premium Scroll Reveal ===== */
+
+.reveal-up{
+    opacity:0;
+    transform:translateY(80px) scale(.96);
+    filter:blur(8px);
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.22,1,.36,1),
+        filter .9s ease;
+    will-change:transform,opacity;
+}
+
+.reveal-up.in{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+}
+
+.delay-1{transition-delay:.12s;}
+.delay-2{transition-delay:.24s;}
+.delay-3{transition-delay:.36s;}
+.delay-4{transition-delay:.48s;}
+.delay-5{transition-delay:.60s;}
