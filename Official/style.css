@@ -406,3 +406,14 @@ section { padding: 100px 8%; }
   .initiative-grid, .event-grid, .gallery-grid, .team-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
