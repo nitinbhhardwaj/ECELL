@@ -4,7 +4,467 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-Cell | Ideate. Innovate. Incubate.</title>
-<link rel="stylesheet" href="style.css">
+<style>:root {
+  --primary: #007AFF;
+  --accent: #00F2FE;
+  --bg: #050505;
+  --bg-alt: #0c0c0c;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #ffffff;
+  --text-dim: #b3b3b3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+
+/* Accessible keyboard focus (kept subtle, on-brand) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============ Navbar ============ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header-logos {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding-right: 15px;
+}
+
+.partner-link img {
+  height: 32px;
+  width: auto;
+  border-radius: 6px;
+  transition: transform 0.3s;
+}
+
+.partner-link img:hover { transform: scale(1.1); }
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.logo span { color: var(--primary); }
+
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+.nav-links a:hover { color: var(--text); }
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ============ Hero ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 8% 0 8%;
+  background: radial-gradient(circle at bottom left, #111, #050505);
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  width: 100%;
+}
+
+.hero-content { flex: 1; }
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+.hero-content h1 span {
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 46ch;
+}
+
+.hero-image {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-image img,
+.hero-image svg {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 30px;
+  z-index: 2;
+  position: relative;
+}
+.image-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  filter: blur(100px);
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.btn-main {
+  background: var(--primary);
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-right: 15px;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn-outline {
+  border: 1px solid var(--text-dim);
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* ============ Stats ============ */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 8%;
+  background: linear-gradient(90deg, #0052D1, #007AFF);
+  margin-top: -50px;
+  position: relative;
+  z-index: 5;
+  border-radius: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.stat-card { text-align: center; color: white; }
+.stat-card h3 { font-size: 2.5rem; font-weight: 800; }
+.stat-card p { color: rgba(255,255,255,0.85); margin-top: 6px; }
+
+/* ============ Section shell ============ */
+section { padding: 100px 8%; }
+.section-head { max-width: 640px; margin: 0 auto 60px; text-align: center; }
+.eyebrow {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.section-head h2 { font-size: 2.4rem; margin-bottom: 12px; }
+.section-head p { color: var(--text-dim); font-size: 1.05rem; }
+
+/* ============ Initiatives ============ */
+.initiative-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.initiative-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 24px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.initiative-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+}
+.initiative-card i {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.initiative-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+.initiative-card p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.55; }
+
+/* ============ Mentor ============ */
+.mentor { background: var(--bg-alt); }
+.mentor-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.mentor-photo-wrap {
+  position: relative;
+}
+.mentor-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+.mentor-quote {
+  font-size: 1.5rem;
+  line-height: 1.55;
+  font-style: italic;
+  border-left: 3px solid var(--primary);
+  padding-left: 24px;
+  color: var(--text);
+}
+.mentor-name { margin-top: 24px; color: var(--text-dim); font-size: 0.92rem; }
+.mentor-name strong { display: block; color: var(--text); font-size: 1.05rem; margin-bottom: 2px; }
+
+/* ============ Events ============ */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.event-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 22px;
+  text-decoration: none;
+  color: var(--text);
+  display: block;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.event-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+.event-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+}
+.event-card h3 { margin: 12px 0 8px; font-size: 1.2rem; }
+.event-card p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.5; }
+
+/* ============ Gallery ============ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.gshot {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+.gshot img { width: 100%; height: 100%; object-fit: cover; }
+.gshot span {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 14px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ============ Team ============ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.team-card { text-align: center; }
+.team-photo {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; }
+.team-card h4 { font-size: 1rem; margin-bottom: 4px; }
+.team-card span { color: var(--accent); font-size: 0.82rem; }
+
+/* ============ CTA ============ */
+.cta { text-align: center; background: var(--bg-alt); }
+.cta h2 { font-size: 2.2rem; margin-bottom: 30px; max-width: 20ch; margin-left: auto; margin-right: auto; }
+.cta-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 440px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.cta-form input {
+  flex: 1;
+  min-width: 220px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+.cta-form input::placeholder { color: var(--text-dim); }
+.cta-form input:focus { outline: none; border-color: var(--primary); }
+
+/* ============ Footer ============ */
+.footer { padding: 50px 8% 30px; border-top: 1px solid var(--border); }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
+.footer-links a:hover { color: var(--text); }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a { color: var(--text-dim); font-size: 1.1rem; }
+.footer-social a:hover { color: var(--accent); }
+.footer-copy { text-align: center; color: var(--text-dim); font-size: 0.78rem; margin-top: 30px; }
+
+/* ============ Animations ============ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.5s; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+/* scroll-reveal (JS toggles .in) */
+.reveal-up{
+    opacity:0;
+    transform:translateY(80px) scale(.96);
+    filter:blur(8px);
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.22,1,.36,1),
+        filter .9s ease;
+    will-change:transform,opacity;
+}
+.reveal-up.in{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+}
+.delay-1{transition-delay:.12s;}
+.delay-2{transition-delay:.24s;}
+.delay-3{transition-delay:.36s;}
+.delay-4{transition-delay:.48s;}
+.delay-5{transition-delay:.60s;}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+    100% { transform: translateY(0); }
+}
+.hero-image svg { animation: float 6s ease-in-out infinite; }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .reveal-up, .hero-image svg {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 992px) {
+  .hero-container { flex-direction: column; text-align: center; }
+  .hero-content h1 { font-size: 3rem; }
+  .hero-content p { margin-left: auto; margin-right: auto; }
+  .hero-image img, .hero-image svg { max-width: 80%; }
+  .header-logos { display: none; }
+  .initiative-grid, .event-grid, .gallery-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .mentor-grid { grid-template-columns: 1fr; gap: 36px; }
+  .mentor-photo-wrap { max-width: 280px; margin: 0 auto; }
+  .stats { flex-direction: column; gap: 30px; }
+}
+@media (max-width: 560px) {
+  .initiative-grid, .event-grid, .gallery-grid, .team-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
 <link rel="icon" href="https://www.abes.ac.in/ecell/static/media/ecell_abes.d6428caca61583a3ea25.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -24,15 +484,12 @@
   </div>
 
   <div class="nav-right">
-    <!-- Institutional Logos as Links -->
     <div class="header-logos">
-      <!-- REPLACE SRC: host your own logo file locally, e.g. images/college-logo.png -->
       <a href="https://www.abes.ac.in" target="_blank" class="partner-link">
-        <img src="images.png" alt="College logo">
+        <img src="images.png" alt="ABES Engineering College logo">
       </a>
-      <!-- REPLACE SRC: host your own logo file locally, e.g. images/partner-logo.png -->
       <a href="https://inurture.net" target="_blank" class="partner-link">
-        <img src="inic.jpeg" alt="Partner logo">
+        <img src="inic.jpeg" alt="iNurture partner logo">
       </a>
     </div>
     <a href="#contact" class="btn-primary">Get Involved</a>
@@ -51,9 +508,37 @@
       </div>
     </div>
     <div class="hero-image fade-in delay-1">
-      <!-- REPLACE SRC: your hero illustration/photo, host locally e.g. images/build.png -->
-      <img src="http://127.0.0.1:5500/Official/build.png" alt="Entrepreneurship illustration">
       <div class="image-glow"></div>
+      <!-- Signature graphic: idea -> launch, replaces the broken hero photo -->
+      <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract illustration of an idea launching, represented by a rocket rising through a network of connected nodes">
+        <defs>
+          <linearGradient id="rocketGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00F2FE"/>
+            <stop offset="100%" stop-color="#007AFF"/>
+          </linearGradient>
+        </defs>
+        <circle cx="260" cy="260" r="230" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <circle cx="260" cy="260" r="170" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <g stroke="rgba(0,242,254,0.35)" stroke-width="1">
+          <line x1="120" y1="140" x2="260" y2="260"/>
+          <line x1="400" y1="150" x2="260" y2="260"/>
+          <line x1="100" y1="360" x2="260" y2="260"/>
+          <line x1="410" y1="370" x2="260" y2="260"/>
+        </g>
+        <g fill="#00F2FE">
+          <circle cx="120" cy="140" r="6"/>
+          <circle cx="400" cy="150" r="5"/>
+          <circle cx="100" cy="360" r="5"/>
+          <circle cx="410" cy="370" r="6"/>
+        </g>
+        <g transform="translate(260,255) rotate(-10)">
+          <path d="M0,-120 C34,-80 40,-20 26,40 L-26,40 C-40,-20 -34,-80 0,-120 Z" fill="url(#rocketGrad)"/>
+          <circle cx="0" cy="-45" r="14" fill="#050505"/>
+          <path d="M-26,10 L-58,55 L-22,42 Z" fill="#007AFF"/>
+          <path d="M26,10 L58,55 L22,42 Z" fill="#007AFF"/>
+          <path d="M-14,40 L0,90 L14,40 Z" fill="#00F2FE" opacity="0.85"/>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
@@ -76,28 +561,28 @@
 
 <!-- Initiatives Section -->
 <section id="initiatives" class="initiatives">
-  <div class="section-head">
+  <div class="section-head reveal-up">
     <span class="eyebrow">What we run</span>
     <h2>Our Initiatives</h2>
     <p>Programs built for every stage — from a first idea to a first term sheet.</p>
   </div>
   <div class="initiative-grid">
-    <div class="initiative-card">
+    <div class="initiative-card reveal-up delay-1">
       <i class="fa-solid fa-lightbulb"></i>
       <h3>Ideation Sprints</h3>
       <p>Weekly sessions that turn loose ideas into a written-down thesis.</p>
     </div>
-    <div class="initiative-card">
+    <div class="initiative-card reveal-up delay-2">
       <i class="fa-solid fa-rocket"></i>
       <h3>Founder Bootcamp</h3>
       <p>A six-week program pressure-testing ideas against real users.</p>
     </div>
-    <div class="initiative-card">
+    <div class="initiative-card reveal-up delay-3">
       <i class="fa-solid fa-handshake"></i>
       <h3>Mentor Network</h3>
       <p>Direct access to founders, operators, and investors who've done it.</p>
     </div>
-    <div class="initiative-card">
+    <div class="initiative-card reveal-up delay-4">
       <i class="fa-solid fa-seedling"></i>
       <h3>Seed Connect</h3>
       <p>Warm introductions to early-stage investors for teams ready to raise.</p>
@@ -108,19 +593,15 @@
 <!-- Mentor Quote Section -->
 <section class="mentor">
   <div class="mentor-grid">
-    <div class="mentor-photo-wrap">
-      <!-- REPLACE SRC: mentor portrait, host locally e.g. images/mentor.jpg -->
-      <img src="https://www.abes.ac.in/ecell/static/media/MahendraGupta.1661058cd79b463445ff.JPG" alt="Faculty mentor portrait" class="mentor-photo">
+    <div class="mentor-photo-wrap reveal-up">
+      <img src="https://www.abes.ac.in/ecell/static/media/MahendraGupta.1661058cd79b463445ff.JPG" alt="Faculty mentor Mahendra Kumar Gupta" class="mentor-photo">
     </div>
-    <div class="mentor-copy">
+    <div class="mentor-copy reveal-up delay-1">
       <span class="eyebrow">A word from our mentor</span>
       <p class="mentor-quote">Entrepreneurship drives innovation, creates jobs, and fuels economic growth. At ABES E-Cell, we inspire students to transform ideas into impactful ventures by fostering an entrepreneurial mindset and providing the right guidance, mentorship, and opportunities. Through flagship events like E-Summit, workshops, startup meetups, and The Entrepreneur Show (TES), we empower aspiring entrepreneurs to innovate, collaborate, and build successful startups. Join us and be a part of a thriving community shaping the future of entrepreneurship.</p>
       <div class="mentor-name">
-        <strong>Mahendra Kumar Gupta
-</strong>
-        Mentor, E-CELL,
-ABES Engineering College,
-Ghaziabad.
+        <strong>Mahendra Kumar Gupta</strong>
+        Mentor, E-CELL, ABES Engineering College, Ghaziabad.
       </div>
     </div>
   </div>
@@ -128,28 +609,28 @@ Ghaziabad.
 
 <!-- Events Section -->
 <section id="events" class="events">
-  <div class="section-head">
+  <div class="section-head reveal-up">
     <span class="eyebrow">On the calendar</span>
     <h2>Where the Work Happens</h2>
     <p>Four formats, one purpose each.</p>
   </div>
   <div class="event-grid">
-    <a href="#" class="event-card">
+    <a href="#" class="event-card reveal-up delay-1">
       <span class="event-tag">Flagship · March</span>
       <h3>The Summit</h3>
       <p>Two days, thousands of attendees, and the investors who write checks.</p>
     </a>
-    <a href="#" class="event-card">
+    <a href="#" class="event-card reveal-up delay-2">
       <span class="event-tag">Cohort · Rolling</span>
       <h3>Bootcamp</h3>
       <p>A six-week sprint from idea to a pitch you'd send an investor.</p>
     </a>
-    <a href="#" class="event-card">
+    <a href="#" class="event-card reveal-up delay-3">
       <span class="event-tag">Talks · Quarterly</span>
       <h3>Speaker Series</h3>
       <p>Founders and operators on the record about what almost broke them.</p>
     </a>
-    <a href="#" class="event-card">
+    <a href="#" class="event-card reveal-up delay-4">
       <span class="event-tag">Competition · Nov</span>
       <h3>Pitch Night</h3>
       <p>Ten teams, one room, mentors who push back on stage.</p>
@@ -159,41 +640,39 @@ Ghaziabad.
 
 <!-- Gallery Section -->
 <section class="gallery">
-  <div class="section-head">
+  <div class="section-head reveal-up">
     <span class="eyebrow">Field notes</span>
     <h2>Last Year, in Frames</h2>
   </div>
   <div class="gallery-grid">
-    <!-- REPLACE SRC on each image below with real event photos -->
-    <div class="gshot"><a href="https://www.abes.ac.in/ecell/events/3"><img src="https://www.abes.ac.in/ecell/static/media/12.b652e11b03df092b598d.jpg" alt="Summit main stage"></a><span>Summit</span></div>
-    <div class="gshot"><img src="imaage.png" alt="Bootcamp session"><span>Bootcamp</span></div>
-    <div class="gshot"><img src="img.png" alt="Pitch night finals"><span>Pitch Night</span></div>
-    <div class="gshot"><img src="hack.png" alt="Campus hangout"><span>Hangouts</span></div>
+    <div class="gshot reveal-up delay-1"><a href="https://www.abes.ac.in/ecell/events/3"><img src="https://www.abes.ac.in/ecell/static/media/12.b652e11b03df092b598d.jpg" alt="Summit main stage"></a><span>Summit</span></div>
+    <div class="gshot reveal-up delay-2"><img src="imaage.png" alt="Bootcamp session"><span>Bootcamp</span></div>
+    <div class="gshot reveal-up delay-3"><img src="img.png" alt="Pitch night finals"><span>Pitch Night</span></div>
+    <div class="gshot reveal-up delay-4"><img src="hack.png" alt="Campus hangout"><span>Hangouts</span></div>
   </div>
 </section>
 
 <!-- Team Section -->
 <section id="team" class="team">
-  <div class="section-head">
+  <div class="section-head reveal-up">
     <span class="eyebrow">The team</span>
     <h2>Run by Students</h2>
   </div>
   <div class="team-grid">
-    <!-- REPLACE SRC on each headshot below -->
-    <div class="team-card">
-      <div class="team-photo"><img src="a.png" alt="Team member"></div>
+    <div class="team-card reveal-up delay-1">
+      <div class="team-photo"><img src="a.png" alt="Anaya Rao"></div>
       <h4>Anaya Rao</h4><span>Overall Coordinator</span>
     </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="b.png" alt="Team member"></div>
+    <div class="team-card reveal-up delay-2">
+      <div class="team-photo"><img src="b.png" alt="Devraj Singh"></div>
       <h4>Devraj Singh</h4><span>Overall Coordinator</span>
     </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="c.png" alt="Team member"></div>
+    <div class="team-card reveal-up delay-3">
+      <div class="team-photo"><img src="c.png" alt="Meher Kapoor"></div>
       <h4>Meher Kapoor</h4><span>Head, Events</span>
     </div>
-    <div class="team-card">
-      <div class="team-photo"><img src="d.png" alt="Team member"></div>
+    <div class="team-card reveal-up delay-4">
+      <div class="team-photo"><img src="d.png" alt="Arjun Nair"></div>
       <h4>Arjun Nair</h4><span>Head, Startup Dev</span>
     </div>
   </div>
@@ -201,8 +680,8 @@ Ghaziabad.
 
 <!-- Contact / CTA -->
 <section id="contact" class="cta">
-  <h2>Get notified before the room fills up.</h2>
-  <form class="cta-form">
+  <h2 class="reveal-up">Get notified before the room fills up.</h2>
+  <form class="cta-form reveal-up delay-1">
     <input type="email" placeholder="you@college.edu" required aria-label="Email address">
     <button type="submit" class="btn-main">Notify Me</button>
   </form>
@@ -218,14 +697,121 @@ Ghaziabad.
       <a href="#team">Team</a>
     </div>
     <div class="footer-social">
-      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
     </div>
   </div>
   <p class="footer-copy">© E-Cell — design reference, replace with your own copy.</p>
 </footer>
 
-<script src="script.js"></script>
+<script>// ===== Wait until the page is fully loaded =====
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ===== Stat Counters =====
+  const counters = document.querySelectorAll(".counter");
+  const COUNTER_DURATION = 1200;
+
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+  const animateCounter = (counter) => {
+    const target = Number(counter.dataset.target);
+    if (Number.isNaN(target)) return;
+
+    const duration = Number(counter.dataset.duration) || COUNTER_DURATION;
+    const startTime = performance.now();
+
+    const updateCounter = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easedProgress = easeOut(progress);
+      const currentValue = Math.ceil(easedProgress * target);
+
+      counter.textContent = progress < 1 ? `${currentValue}+` : `${target}+`;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    };
+
+    requestAnimationFrame(updateCounter);
+  };
+
+  const startCounters = () => counters.forEach(animateCounter);
+
+  if ("IntersectionObserver" in window) {
+    const statsSection = document.querySelector(".stats");
+
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statsObserver.observe(statsSection);
+    }
+
+    // ===== Scroll Reveal =====
+    const revealElements = document.querySelectorAll(".reveal-up");
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+  } else {
+    // No IntersectionObserver support: show everything immediately
+    document.querySelectorAll(".reveal-up").forEach((el) => el.classList.add("in"));
+  }
+
+  // ===== Newsletter Form =====
+  const ctaForm = document.querySelector(".cta-form");
+
+  if (ctaForm) {
+    ctaForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const button = ctaForm.querySelector("button");
+      const originalText = button ? button.textContent : "Notify Me";
+
+      if (button) {
+        button.textContent = "Added ✓";
+        button.disabled = true;
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+        }, 2000);
+      }
+
+      ctaForm.reset();
+    });
+  }
+
+  // ===== Smooth Scrolling =====
+  const navLinks = document.querySelectorAll('a[href^="#"]');
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      if (targetId === "#") return;
+
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        e.preventDefault();
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+});
+</script>
 </body>
 </html>

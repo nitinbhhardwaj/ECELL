@@ -1,122 +1,107 @@
 // ===== Wait until the page is fully loaded =====
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ===== Stat Counters =====
-    const counters = document.querySelectorAll(".counter");
-    const COUNTER_DURATION = 1200;
+  // ===== Stat Counters =====
+  const counters = document.querySelectorAll(".counter");
+  const COUNTER_DURATION = 1200;
 
-    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
-    const animateCounter = (counter) => {
-        const target = Number(counter.dataset.target);
+  const animateCounter = (counter) => {
+    const target = Number(counter.dataset.target);
+    if (Number.isNaN(target)) return;
 
-        if (Number.isNaN(target)) return;
+    const duration = Number(counter.dataset.duration) || COUNTER_DURATION;
+    const startTime = performance.now();
 
-        const duration = Number(counter.dataset.duration) || COUNTER_DURATION;
-        const startTime = performance.now();
+    const updateCounter = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easedProgress = easeOut(progress);
+      const currentValue = Math.ceil(easedProgress * target);
 
-        const updateCounter = (currentTime) => {
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            const easedProgress = easeOut(progress);
+      counter.textContent = progress < 1 ? `${currentValue}+` : `${target}+`;
 
-            const currentValue = Math.ceil(easedProgress * target);
-
-            counter.textContent = progress < 1
-                ? `${currentValue}+`
-                : `${target}+`;
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            }
-        };
-
+      if (progress < 1) {
         requestAnimationFrame(updateCounter);
+      }
     };
 
-    const startCounters = () => {
-        counters.forEach(animateCounter);
-    };
+    requestAnimationFrame(updateCounter);
+  };
 
-    if ("IntersectionObserver" in window) {
-        const statsSection = document.querySelector(".stats");
+  const startCounters = () => counters.forEach(animateCounter);
 
-        if (statsSection) {
-            const statsObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        startCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.3
-            });
+  if ("IntersectionObserver" in window) {
+    const statsSection = document.querySelector(".stats");
 
-            statsObserver.observe(statsSection);
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statsObserver.observe(statsSection);
+    }
+
+    // ===== Scroll Reveal =====
+    const revealElements = document.querySelectorAll(".reveal-up");
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.15 });
 
-        // ===== Scroll Reveal =====
-        const revealElements = document.querySelectorAll(".reveal-up");
+    revealElements.forEach((element) => revealObserver.observe(element));
+  } else {
+    // No IntersectionObserver support: show everything immediately
+    document.querySelectorAll(".reveal-up").forEach((el) => el.classList.add("in"));
+  }
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("in");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.15
-        });
+  // ===== Newsletter Form =====
+  const ctaForm = document.querySelector(".cta-form");
 
-        revealElements.forEach((element) => {
-            revealObserver.observe(element);
-        });
-    }
+  if (ctaForm) {
+    ctaForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const button = ctaForm.querySelector("button");
+      const originalText = button ? button.textContent : "Notify Me";
 
-    // ===== Newsletter Form =====
-    const ctaForm = document.querySelector(".cta-form");
+      if (button) {
+        button.textContent = "Added ✓";
+        button.disabled = true;
 
-    if (ctaForm) {
-        ctaForm.addEventListener("submit", (e) => {
-            e.preventDefault();
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+        }, 2000);
+      }
 
-            const button = ctaForm.querySelector("button");
+      ctaForm.reset();
+    });
+  }
 
-            if (button) {
-                button.textContent = "Added ✓";
-                button.disabled = true;
+  // ===== Smooth Scrolling =====
+  const navLinks = document.querySelectorAll('a[href^="#"]');
 
-                setTimeout(() => {
-                    button.textContent = "Subscribe";
-                    button.disabled = false;
-                }, 2000);
-            }
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      if (targetId === "#") return;
 
-            ctaForm.reset();
-        });
-    }
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        e.preventDefault();
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
 
 });
-    // ===== Smooth Scrolling =====
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-
-    navLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-            const targetId = link.getAttribute("href");
-
-            // Ignore empty anchors
-            if (targetId === "#") return;
-
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-                e.preventDefault();
-
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
-        });
-    });
